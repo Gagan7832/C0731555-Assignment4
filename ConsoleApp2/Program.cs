@@ -13,11 +13,17 @@ namespace ConsoleApp2
     class Program
     {
         ArrayList Beowulf;
+
+
         static void Main(string[] args)
         {
+
             Program p = new Program();
+
             p.Beowulf = new ArrayList();
+
             p.ReadTextFiles();
+
         }
         public void Run()
         {
@@ -33,27 +39,25 @@ namespace ConsoleApp2
             {
                 int counter = 0;
 
-                string delim = " ,.";
+                string ln;
 
-                string[] fields = null;
 
-                string line = null;
 
-                while (!file.EndOfStream)
+                while ((ln = file.ReadLine()) != null)
                 {
+                    Console.WriteLine(ln);
 
-                    line = file.ReadLine();
 
-                    line.Trim();
+                    Beowulf.Add(ln);
 
-                    fields = line.Split(delim.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
 
-                    counter += fields.Length;
+                    counter++;
                 }
 
-
                 file.Close();
-                Console.WriteLine($"The text file has {counter} words.");
+
+
+                Console.WriteLine($"File has {counter} lines. ");
 
 
             }
@@ -65,18 +69,7 @@ namespace ConsoleApp2
 
             int countSpaces = 0;
 
-            foreach (char c in line)
-            {
-                if (char.IsLetter(c))
-                {
-                    counterletters++;
-
-                }
-                if (char.IsWhiteSpace(c))
-                {
-                    countSpaces++;
-                }
-            }
+           
             return countSpaces;
         }
     }
