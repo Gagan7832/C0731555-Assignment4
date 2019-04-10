@@ -39,20 +39,31 @@ namespace ConsoleApp2
             {
                 int counter = 0;
 
-                string ln;
+                int number = 0;
 
+                string line;
 
+                while ((line = file.ReadLine()) != null)
 
-                while ((ln = file.ReadLine()) != null)
                 {
-                    Console.WriteLine(ln);
 
+                    if (line.Contains("Sea") && line.Contains("Fare") || line.Contains("sea") && line.Contains("fare"))
 
-                    Beowulf.Add(ln);
+                    {
 
+                        int x = counter - 1;
+
+                        number++;
+
+                    }
 
                     counter++;
+
                 }
+
+                Console.WriteLine($"The number of lines that contains *Sea* and *Fare* are {number}");
+
+
 
                 file.Close();
 
